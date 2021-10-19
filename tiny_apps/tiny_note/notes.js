@@ -1,47 +1,71 @@
-const notes = [];
+let notes = [];
 
 const generateNotes = () => {
-    const canvas = document.createElement("div");
-    canvas.id = "notebook";
-    canvas.style.width = "500px";
-    canvas.style.height = "500px";
-    canvas.style.border = `3px solid ${appList[0].color}`;
+    const localStorage = window.localStorage;
+
+    const notebook = document.createElement('div');
+    notebook.id = 'notebook';
+    notebook.style.border = `4px solid ${appList[0].color}`
+    notebook.style.width = "500px";
+    notebook.style.height = "500px";
+
+    const options = document.getElementById('options')
+
+
     const formatNote = note => {
-        const formattedNote = document.createElement("div");
+        let formattedNote = document.createElement('div');
         formattedNote.id = note.id;
         formattedNote.innerHTML = note.text;
-        formattedNote.className = "note";
+        formattedNote.className = 'note';
         return formattedNote;
+    }
+
+    const renderNotes = () => {
+        const saved = localStorage.getItem('notes');
+        if (saved) {
+            let savedNotes = JSON.parse(saved);
+            savedNotes.forEach(note => {
+                let formattedNote = formatNote(note);
+                notebook.append(formattedNote);
+            })
+        }
     }
 
     const addNote = text => {
         const note = {
             text: text,
-            id: Date.now()
-        }
+            id: Date.now(),
+        };
+
         notes.push(note);
+        localStorage.setItem('notes', JSON.stringify(notes));
         let formattedNote = formatNote(note);
-        canvas.append(formattedNote);
+        notebook.append(formattedNote);
     }
 
+    const form = document.createElement('form');
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'Your note here...';
+    const button = document.createElement('button');
+    button.type = 'submit';
+    button.innerHTML = 'Submit';
 
-    const form = document.createElement("form");
-    form.addEventListener("submit", e  => {
+    form.addEventListener('submit', e => {
         e.preventDefault();
+
         const text = input.value.trim();
+
         addNote(text);
-        input.value = ""
-    })
-
-    const input = document.createElement("input");
-    input.type = "text";
-
-    const button = document.createElement("button");
-    button.type = "submit";
-    button.innerHTML = "Submit";
+        input.value = '';
+    });
 
     form.append(input);
     form.append(button);
-    display.append(canvas);
-    display.append(form);
+
+    display.append(notebook);
+    options.append(form);
+
+
+    renderNotes();
 }

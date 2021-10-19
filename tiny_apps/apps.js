@@ -1,6 +1,6 @@
 let apps = {
     app: {
-        name: 'note',
+        name: 'app',
         color: '#2ED9EB'
     },
     blog: {
@@ -8,11 +8,11 @@ let apps = {
         color: '#E91E63'
     },
     shop: {
-        name: 'shop',
+        name: 'math',
         color: '#FDD835'
     },
     note: {
-        name: 'note',
+        name: 'notes',
         color: '#FFAB00'
     },
     game: {

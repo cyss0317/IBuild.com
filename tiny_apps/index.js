@@ -15,7 +15,7 @@ const render = appName => {
     switch(appName) {
         case('game'):
             return generateGame();
-        case('note'):
+        case('notes'):
             return generateNotes();
         case('art'):
             return generateArt();
