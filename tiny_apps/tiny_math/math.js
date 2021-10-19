@@ -69,6 +69,8 @@ const generateMath = () =>{
             calculate();
             state.currentOp = opInput;
         } else {
+            state.total = parseFloat(state.currentInput);
+            state.currentInput = "";
             state.currentOp = opInput;
         }
     }
