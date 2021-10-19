@@ -4,11 +4,11 @@ let apps = {
         color: '#2ED9EB'
     },
     blog: {
-        name: 'blog',
+        name: 'math',
         color: '#E91E63'
     },
     shop: {
-        name: 'math',
+        name: 'shop',
         color: '#FDD835'
     },
     note: {

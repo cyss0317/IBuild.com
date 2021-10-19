@@ -21,6 +21,8 @@ const render = appName => {
             return generateArt();
         case('grave'):
             return generateGrave();
+        case('math'):
+            return generateMath();
         default:
             return;
     }
