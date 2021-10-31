@@ -27,11 +27,14 @@ const devtimeCup = (matches, outcome) => {
 const matches = [['germany', 'spain'], ['spain', "england"], ['england', 'germany']]
 const outcome = [2,2,1];
 
-return devtimeCup(matches, outcome);
+console.log(devtimeCup(matches, outcome));
 
 
-first = [0,2,6,5,2,3,1,3,3,9]
+// first = [0,2,6,5,2,3,1,3,3,9]
 // first = [1,8,7,3,1,3,4,2,3,1]
+let first = [11,2];
+
+let second = [12, 1];
 const cupPhoto = (first, second) => {
     //two separate iterations 
         // iterate over the first row and find out if all condition is true; then return true
@@ -46,6 +49,9 @@ const cupPhoto = (first, second) => {
         first[i] < second[i] ? isPossible = true : isPossible = false;
     }
 
-    return isPossble;
+    return isPossible;
 
 }
+
+
+console.log(cupPhoto(first,second))
